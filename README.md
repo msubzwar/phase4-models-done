@@ -37,5 +37,4 @@ As mentioned in class, it is strongly recommended you pass all your controller t
 Additional notes
 ---
 More exciting notes to come...
-# 67-272_2020_Creamery_P3_Starter
-# 67-272_2020_Creamery_P3_Starter
+
