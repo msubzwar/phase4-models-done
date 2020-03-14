@@ -10,7 +10,7 @@ All models, controllers, and services have 100% test coverage.
 
 Create and populate the database
 ---
-The development database can be created and populated with a large number of realistic, but still fictitious, data by running the command `rake db:populate` on the command line of the main directory.  This will take a few minutes, but will give you:
+The development database can be created and populated with a large number of realistic, but still fictitious, data by running the command `rails db:populate` on the command line of the main directory.  This will take a few minutes, but will give you:
 
 1. Two admins, Alex and Mark.
 
