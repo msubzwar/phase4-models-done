@@ -1,0 +1,40 @@
+<h2>Listing Active Stores</h2>
+
+<table class="highlight"> 
+  <tr>
+    <th>    Active Stores  </th>
+    <th> Name              </th>
+    <th>Current Assignments</th>
+    <th>Phone</th>
+  </tr>
+
+<% @stores.active.each do |store| %>
+  <tr>
+    <td><%= link_to store.name, store_path(store) %></td>
+    <td></td>
+    <td><%= store.phone.insert(0, '').insert(3, '-').insert(7, '-') %></td>
+    
+    <td><%= link_to 'Edit', edit_store_path(store),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Destroy', store, confirm: 'Are you sure?', method: :delete, :class=> "waves-effect waves-light btn red" %></td>
+
+  </tr>
+<% end %>
+<th>    inActive Stores  </th>
+<% @stores.inactive.each do |store| %>
+  <tr>
+    <td><%= link_to store.name, store_path(store) %></td>
+    <td><%= link_to 'Edit', edit_store_path(store),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Destroy', store, confirm: 'Are you sure?', method: :delete, :class=> "waves-effect waves-light btn red" %></td>
+
+  </tr>
+<% end %>
+</table>
+<br />
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @store, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+<br />
+
+<%= link_to 'New Store', new_store_path %>

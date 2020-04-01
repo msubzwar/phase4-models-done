@@ -1,0 +1,60 @@
+<p>
+  <%= @employees.name %>
+</p>
+
+<p>
+  <%= @employees.role.capitalize %>
+</p>
+<p>
+  <b>Phone:</b>
+
+  <%= @employees.phone.insert(0, '').insert(3, '-').insert(7, '-') %>
+</p>
+
+<p>
+  <b>Social Secuirity Number:</b>
+  <%= @employees.ssn.insert(0, '').insert(3, '-').insert(6, '-') %>
+</p>
+
+<p>
+  <b>Date of Birth:</b>
+  <%= @employees.date_of_birth.to_formatted_s(:long) %>
+</p>
+<p>
+  
+  <%= @employees.assignments.first.store.name%>
+</p>
+<p>
+    <% if @employees.assignments.current  %>
+      <b>Current Assignments</b>
+   <% end %>
+
+</p>
+<p>
+  <% if @employees.assignments.current  %>
+  <%= @employees.assignments.first.store.name %>
+  <% end %>
+</p>
+
+<p>
+  
+  Since <%= @employees.assignments.first.start_date.to_formatted_s(:long) %> 
+</p>
+<p>
+   <% unless @employees.assignments.past  %>
+      <b>Previous Assignments</b>
+      <% end %>
+</p>
+<p>
+    <% unless @employees.assignments.past  %>
+    <b>Dates</b>
+    <% end %>
+</p>
+<p>
+    <% unless @employees.assignments.past  %>
+		 <%= @employees.assignments.past.first.start_date %> <%= @employees.assignments.past.first.end_date%>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_employee_path(@employees) %> |
+<%= link_to 'Back', employees_path %>

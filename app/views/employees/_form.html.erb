@@ -1,0 +1,61 @@
+<%= form_for(@employees) do |f| %>
+
+  <% if @employees.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employees.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @employees.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr valign="top">
+			<td>
+				<h2>Employee Details:</h2>
+
+				<div class="input-field">
+			    <%= f.label :First_Name %>
+			    <%= f.text_field :first_name%>
+			  </div>
+			  <div class="input-field">
+			    <%= f.label :Last_Name %>
+			    <%= f.text_field :last_name%>
+			  </div>
+			  <div class="input-field">
+                <%= f.label :phone %>
+                <%= f.text_field :phone %>
+             </div>
+             <div class="input-field">
+                <%= f.label :ssn %>
+                <%= f.text_field :ssn %>
+             </div>
+			  
+			  <div class="input-field">
+			    <%= f.label :date_of_birth %>
+			    <%= f.text_field :date_of_birth, data:{ provide:'datepicker' } %>
+			     
+			  </div>
+			  
+			<div class="input-field">
+                <%= f.label :role %>
+                <%= f.text_field :ssn %>
+                
+
+             </div>
+             
+             
+			  <div class="actions">
+                <%= f.submit :class=>"btn waves-effect waves-light" %>
+                <%= link_to 'Cancel', employees_path, :class => 'waves-effect waves-light btn red' %>
+              </div>
+			</td>
+			<td width="25">&nbsp;</td>
+
+		</tr>
+	</table>
+<% end %>
+

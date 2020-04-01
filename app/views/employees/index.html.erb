@@ -1,0 +1,48 @@
+<h1>Listing </h1>
+
+    <tr><td><th>Active Managers</th></td>  
+    <td><th> Active Employees</th></td>
+    </tr>
+<table class="highlight"> 
+  <tr>
+    <th>    Employee Name   </th>
+    <th>    Role            </th>
+    <th>    Phone           </th>
+    <th> Current Assignment </th>
+  </tr>
+
+<% @employees.regulars.active.each do |employee| %>
+  <tr>
+    <td><%= link_to employee.name, employee_path(employee) %></td>
+    <td><%= link_to employee.role.capitalize, employee_path(employee) %></td>
+    <td><%=  employee.phone.insert(0, '').insert(3, '-').insert(7, '-')  %></td>
+    <td><%= employee.assignments.first.store.name %></td>
+    <td><%= link_to 'Detail', employee_path(employee),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Edit', edit_employee_path(employee),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Destroy', employee, confirm: 'Are you sure?', method: :delete, :class=> "waves-effect waves-light btn red" %></td>
+  </tr>
+<% end %>
+<% @employees.managers.active.each do |employee| %>
+  <tr>
+    <td><%= link_to employee.name, employee_path(employee) %></td>
+    <td><%= link_to employee.role.capitalize, employee_path(employee) %></td>
+    <td><%=  employee.phone.insert(0, '').insert(3, '-').insert(7, '-')  %></td>
+    <td><%= employee.assignments.first.store.name %></td>
+    <td><%= link_to 'Detail', employee_path(employee),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Edit', edit_employee_path(employee),:class=> "waves-effect waves-light btn light-blue" %></td>
+    <td><%= link_to 'Destroy', employee, confirm: 'Are you sure?', method: :delete, :class=> "waves-effect waves-light btn red" %></td>
+  </tr>
+<% end %>
+</div>
+</table>
+<br/>
+
+<br/>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+<br />
+
+<%= link_to 'New Employee', new_employee_path %>
